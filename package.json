@@ -1,5 +1,6 @@
 {
-  "name": "FlarePersona",
+  "name": "flare-persona",
+  "author": "Rogelio Monteagudo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +9,6 @@
     "dev": "SET NODE_ENV=development && webpack --watch"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.12.10",
