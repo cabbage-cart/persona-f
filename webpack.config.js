@@ -9,7 +9,7 @@ const mode =
 module.exports = {
   mode,
   entry: {
-    persona: "./src/index.js"
+    persona: "./src/index.ts"
   },
   output: {
     filename: "[name].bundle.js",
@@ -41,6 +41,13 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "ts-loader"
+        }
+      },
+      {
         test: /\.(png|jpe?g|gif|svg)$/i,
         use: [
           {
@@ -49,6 +56,9 @@ module.exports = {
         ],
       }
     ],
+  },
+  resolve: {
+    extensions: ['.ts', '.js']
   },
   plugins: [
     new HtmlWebpackPlugin({
