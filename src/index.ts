@@ -20,7 +20,7 @@ class Main {
     }
 }
 
-function initClass(): Promise<string | null | void> {
+function initClass(): Promise<string | void> {
     const main = new Main(ClassBuilder);
     return new Promise((resolve) => {
         setTimeout(() => {
