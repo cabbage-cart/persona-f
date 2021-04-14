@@ -1,6 +1,8 @@
 import './index.css'
 import './styles.scss'
 
-import { wizardry } from './classes';
+import  Wizard from './classes';
 
-console.log(wizardry);
+const wizard = new Wizard();
+
+wizard.getClass().then(r => console.log(r));

@@ -1,1 +1,1 @@
-export * from './init';
+export { default } from './wizard';
