@@ -1,0 +1,1 @@
+exports.wizardry = "ice spell";

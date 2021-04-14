@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.container {
+  margin: 0 auto;
+}
+h1 {
+  line-height: 1.2em;
+}
+
+/*# sourceMappingURL=main.css.map*/
