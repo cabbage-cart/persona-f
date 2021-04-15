@@ -20,6 +20,9 @@ const config = {
     inline: true,
     writeToDisk: true,
     index: 'persona.html',
+    publicPath: '/dist/',
+    watchContentBase: true,
+    compress: true,
     contentBase: path.join(__dirname, './dist'),
     port: 8001,
   },
@@ -63,11 +66,16 @@ const config = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'file-loader',
           },
         ],
+      },
+      {
+        test: /\.hbs$/,
+        use: ['handlebars-loader'],
       },
     ],
   },
