@@ -1,5 +1,19 @@
-.button-wrapper {
-    width: 100px;
-    height: 100px;
-    background: red;
+.btn-wrapper {
+  width: var(--width);
+  cursor: pointer;
+  height: var(--height);
+  background: unset;
+  border: 1px solid #b0bac9;
+  background-color: var(--bgColor);
+  font-weight: 600
+}
+.btn-wrapper.btn-circle {
+  border-radius: 50%;
+}
+.btn-wrapper.btn-default {
+  border-radius: 12px;
+}
+.btn-wrapper.btn-text {
+  background-color: unset;
+  border: none;
 }
