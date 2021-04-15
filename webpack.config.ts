@@ -1,65 +1,94 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+// import TerserPlugin from 'terser-webpack-plugin';
 import path from 'path';
 
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
-module.exports = {
- mode,
- entry: {
-  persona: './src/index.tsx',
- },
- output: {
-  path: path.resolve(__dirname, 'dist/'),
-  filename: '[name].bundle.js',
-  publicPath: '/',
- },
- devServer: {
-  inline: true,
-  compress: true,
-  contentBase: path.join(__dirname, 'dist'),
-  port: 8001,
- },
- module: {
-  rules: [
-   {
-    test: /\.(s[ac]|c)ss$/i,
-    use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader', 'postcss-loader'],
-   },
-   {
-    test: /\.js$/,
-    loader: 'babel-loader',
-    exclude: /node_modules/,
-   },
-   {
-    test: /\.tsx$/,
-    exclude: /node_modules/,
-    use: {
-     loader: 'ts-loader',
+const config = {
+  mode,
+  entry: {
+    persona: './src/index.tsx',
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist/'),
+    filename: '[name].bundle.js',
+    publicPath: '',
+  },
+  devServer: {
+    inline: true,
+    writeToDisk: true,
+    index: 'persona.html',
+    contentBase: path.join(__dirname, './dist'),
+    port: 8001,
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all', // optimize all chunks
+      minSize: 3000,
     },
-   },
-   {
-    test: /\.(png|jpe?g|gif|svg)$/i,
-    use: [
-     {
-      loader: 'file-loader',
-     },
+    // minimize: true,
+    // minimizer: [new TerserPlugin()],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(s[ac]|c)ss$/i,
+        use: [
+          { loader: MiniCssExtractPlugin.loader },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              importLoaders: 2,
+            },
+          },
+          { loader: 'scoped-css-loader' },
+          { loader: 'sass-loader' },
+          { loader: 'postcss-loader' },
+        ],
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.tsx$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'ts-loader',
+        },
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
     ],
-   },
+  },
+  resolve: {
+    extensions: ['.ts', '.js', '.tsx', '.jsx'],
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].styles.css',
+    }),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: 'src/page-template.hbs',
+      filename: 'persona.html',
+      inject: 'body',
+      title: 'Persona Flare',
+      description: 'Persona Flare App',
+      chunks: ['persona'],
+    }),
   ],
- },
- resolve: {
-  extensions: ['.ts', '.js', '.tsx', '.jsx'],
- },
- plugins: [
-  new MiniCssExtractPlugin(),
-  new CleanWebpackPlugin(),
-  new HtmlWebpackPlugin({
-   template: './src/index.html',
-   filename: 'index.html',
-   inject: 'body',
-  }),
- ],
- devtool: 'source-map',
+  devtool: 'source-map',
 };
+
+module.exports = config;
