@@ -6,9 +6,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "SET NODE_ENV=production && webpack --watch",
-    "build-dev": "SET NODE_ENV=development && webpack --watch",
-    "start": "webpack serve"
+    "build": "NODE_ENV=production webpack --watch",
+    "build-dev": "NODE_ENV=development webpack --watch",
+    "start": "webpack --watch & webpack serve --open --hot",
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix"
+    ],
+    "*.js": "eslint --cache --fix"
   },
   "keywords": [],
   "license": "ISC",
@@ -16,16 +24,34 @@
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.13.15",
+    "@babel/preset-react": "^7.13.13",
     "@babel/register": "^7.13.14",
+    "@types/mini-css-extract-plugin": "^1.4.1",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "@types/terser-webpack-plugin": "^5.0.3",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "css-loader": "^5.2.1",
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.1",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
     "mini-css-extract-plugin": "^1.4.1",
     "postcss": "^8.2.10",
     "postcss-loader": "^5.2.0",
     "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.2.1",
     "sass": "^1.32.8",
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0",
@@ -37,6 +63,8 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "core-js": "^3.10.1"
+    "core-js": "^3.10.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   }
 }

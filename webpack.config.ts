@@ -1,51 +1,48 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const path = require("path");
-const mode =
-  process.env.NODE_ENV === "production" ? "production" : "development";
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import path from 'path';
+
+const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
 module.exports = {
   mode,
   entry: {
-    persona: "./src/index.ts"
+    persona: './src/index.tsx',
   },
   output: {
-    filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, 'dist/'),
+    filename: '[name].bundle.js',
+    publicPath: '/',
   },
   optimization: {
     minimize: true,
     minimizer: [new TerserPlugin()],
   },
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    inline: true,
     compress: true,
-    port: 3000,
+    contentBase: path.join(__dirname, 'dist'),
+    port: 8001,
   },
   module: {
     rules: [
       {
         test: /\.(s[ac]|c)ss$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "sass-loader",
-          "postcss-loader",
-        ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader', 'postcss-loader'],
       },
       {
         test: /\.js$/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         exclude: /node_modules/,
       },
       {
-        test: /\.ts$/,
+        test: /\.tsx$/,
         exclude: /node_modules/,
         use: {
-          loader: "ts-loader"
-        }
+          loader: 'ts-loader',
+        },
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
@@ -54,20 +51,20 @@ module.exports = {
             loader: 'file-loader',
           },
         ],
-      }
+      },
     ],
   },
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js', '.tsx', '.jsx'],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: "./src/index.html",
-      filename: "index.html",
-      inject: "body",
-    }),
-    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: 'index.html',
+      inject: 'body',
+    }),
   ],
-  devtool: "source-map",
+  devtool: 'source-map',
 };
