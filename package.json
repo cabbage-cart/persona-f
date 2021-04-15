@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production webpack --watch",
     "build-dev": "NODE_ENV=development webpack --watch",
-    "start": "NODE_ENV=development webpack serve --open --hot",
+    "start": "NODE_ENV=development webpack serve & webpack --watch",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
     "prepare": "husky install"
   },

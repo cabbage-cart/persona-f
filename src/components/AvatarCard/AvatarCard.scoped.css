@@ -1,5 +1,10 @@
 .card-wrapper {
-    height: 200px;
-    width: 100px;
-    background-color: blue;
+  min-height: 333px;
+  min-width: 540px;
+  background-color: #fff;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
 }

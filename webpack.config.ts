@@ -17,19 +17,16 @@ const config = {
     publicPath: '',
   },
   devServer: {
-    inline: true,
     writeToDisk: true,
-    index: 'persona.html',
-    publicPath: '/dist/',
     watchContentBase: true,
-    compress: true,
-    contentBase: path.join(__dirname, './dist'),
-    port: 8001,
+    contentBase: path.resolve(__dirname, './dist'),
+    index: 'persona.html', // default index.html
+    port: 8000,
   },
   optimization: {
     splitChunks: {
       chunks: 'all', // optimize all chunks
-      minSize: 3000,
+      minSize: 3000, // set minSize to 3000 so react is included
     },
     // minimize: true,
     // minimizer: [new TerserPlugin()],
