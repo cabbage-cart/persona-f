@@ -33,7 +33,6 @@
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "babel-loader": "^8.2.2",
-    "babel-plugin-react-scoped-css": "^1.1.1",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "css-loader": "^5.2.1",
     "eslint": "^7.24.0",
@@ -56,7 +55,6 @@
     "prettier": "^2.2.1",
     "sass": "^1.32.8",
     "sass-loader": "^11.0.1",
-    "scoped-css-loader": "^1.0.0",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.1.1",
     "ts-loader": "^8.1.0",
@@ -66,8 +64,8 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "clsx": "^1.1.1",
     "core-js": "^3.10.1",
-    "craco-plugin-scoped-css": "^1.1.1",
     "handlebars": "^4.7.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"

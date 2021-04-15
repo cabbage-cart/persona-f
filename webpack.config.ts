@@ -44,7 +44,6 @@ const config = {
               importLoaders: 2,
             },
           },
-          { loader: 'scoped-css-loader' },
           { loader: 'sass-loader' },
           { loader: 'postcss-loader' },
         ],

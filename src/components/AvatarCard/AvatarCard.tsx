@@ -1,11 +1,14 @@
-import React, { FC } from 'react';
+import React from 'react';
 import './AvatarCard.scoped.css';
-import { Button } from './components';
+import { Button, CardBottom, CardTop } from './components';
 
-const AvatarCard: FC = () => {
+const AvatarCard = () => {
   return (
     <div className="card-wrapper">
-      <Button />
+      <CardTop />
+      <CardBottom>
+        <Button width={80} height={90} label="Click" kind="text" color="secondary" />
+      </CardBottom>
     </div>
   );
 };
