@@ -1,6 +1,6 @@
 {
     "env": {
-        "browser": true // to include global variables(like document, winow, etc)
+        "browser": true // to include global variables(like document, window, etc)
     },
     "parser": "@typescript-eslint/parser", // Specifies the ESLint parser
     "parserOptions": {
@@ -17,7 +17,7 @@
         "react": {
             "version": "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
         },
-        "import/resolver": {// resolve imports in this kind of case `export {default } from './Component`
+        "import/resolver": { // resolve imports in this kind of case `export { default } from './Component`
             "node": {
                 "extensions": [
                     ".js",
@@ -42,8 +42,14 @@
         "plugin:prettier/recommended" // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
     ],
     "rules": {
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": [
+            "error"
+        ],
+        "semi": "off",
+        "@typescript-eslint/semi": "error",
         "@typescript-eslint/no-var-requires": 0,
-        "import/prefer-default-export": "off",
+        "import/prefer-default-export": "off", // resolves export { default as AvatarCard } from './AvatarCard'; when only default export in file
         "global-require": 0, // disable Unexpected require() eslint warning
         "react/jsx-filename-extension": [
             2,
@@ -66,7 +72,7 @@
         "@typescript-eslint/no-use-before-define": [
             "error"
         ],
-        "import/extensions": [// to include extensions
+        "import/extensions": [ // to include extensions
             "error",
             "ignorePackages",
             {

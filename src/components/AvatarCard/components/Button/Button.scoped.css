@@ -5,15 +5,140 @@
   background: unset;
   border: 1px solid #b0bac9;
   background-color: var(--bgColor);
-  font-weight: 600
+  font-weight: 600;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem 2rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
 }
-.btn-wrapper.btn-circle {
+
+.btn-wrapper.btn-slideInLeft {
+  animation-name: slideInLeft;
+  animation-duration: 350ms;
+  animation-delay: calc(var(--animation-order) * 100ms);
+  animation-fill-mode: both;
+  animation-timing-function: ease;
+}
+.btn-wrapper.btn-slideInRight {
+  animation-name: slideInRight;
+  animation-duration: 350ms;
+  animation-delay: calc(var(--animation-order) * 100ms);
+  animation-fill-mode: both;
+  animation-timing-function: ease;
+}
+
+.btn-wrapper:not(:last-child) {
+  margin-right: 1em;
+}
+
+.btn-wrapper.btn-neu-circle {
+  padding: 0 !important;
   border-radius: 50%;
+  background-color: unset;
+  border: none;
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001,
+    inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001;
+  transition: box-shadow 0.2s cubic-bezier(0.79, 0.21, 0.06, 0.81);
 }
+
+.btn-wrapper.btn-neu-circle > div {
+  width: calc(100% - 15px);
+  border-radius: 50%;
+  height: calc(100% - 15px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.2s cubic-bezier(0.79, 0.21, 0.06, 0.81);
+}
+
+.btn-wrapper.btn-neu-circle.active > div {
+  box-shadow: inset -3px -3px 7px #ffffff73, inset 3px 3px 5px rgba(94, 104, 121, 0.288);
+}
+
+.btn-wrapper.btn-neu.btn-stagger.btn-stagger-in {
+  animation-name: animateIn;
+  animation-duration: 350ms;
+  animation-delay: calc(var(--animation-order) * 100ms);
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+}
+.btn-wrapper.btn-neu.btn-stagger.btn-stagger-out {
+  animation-name: animateOut;
+  animation-duration: 350ms;
+  animation-delay: calc(var(--animation-order) * 100ms);
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+}
+
+.btn-wrapper.btn-neu {
+  background-color: unset;
+  border: none;
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001,
+    inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001;
+  transition: box-shadow 0.2s cubic-bezier(0.79, 0.21, 0.06, 0.81);
+}
+.btn-wrapper.btn-neu:focus {
+  box-shadow: 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #0001, 0px 0px 0px 0px #0001,
+    inset -7px -7px 20px 0px #fff9, inset -4px -4px 5px 0px #fff9, inset 7px 7px 20px 0px #0003,
+    inset 4px 4px 5px 0px #0001;
+}
+
 .btn-wrapper.btn-default {
-  border-radius: 12px;
+  border: 1px solid #ccc;
+  background-color: unset;
 }
+
 .btn-wrapper.btn-text {
   background-color: unset;
   border: none;
+}
+
+/** 
+animations go under
+*/
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes animateIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes animateOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
 }
