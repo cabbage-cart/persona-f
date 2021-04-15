@@ -1,9 +1,11 @@
 import React, { FC } from 'react';
+import { Avatar } from './components';
+import './CardTop.scoped.css';
 
 const CardTop: FC = () => {
   return (
     <div className="card-top">
-      <h1>Card Top</h1>
+      <Avatar />
     </div>
   );
 };
