@@ -9,6 +9,10 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+* {
+  user-select: none;
+}
+
 #app {
   position: absolute;
   top: 0;

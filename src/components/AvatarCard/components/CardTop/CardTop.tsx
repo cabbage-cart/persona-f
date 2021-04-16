@@ -23,9 +23,10 @@ const CardTop: FC<Props> = ({ state, avatarStates, award }: Props) => {
             ButtonService.setStaggerOut(false);
           }}
           label="back"
-          kind="text"
+          kind="default"
           color="secondary"
           style={{
+            height: '40px',
             position: 'absolute',
             top: 0,
           }}
