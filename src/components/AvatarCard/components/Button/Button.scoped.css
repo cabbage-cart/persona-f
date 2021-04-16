@@ -5,6 +5,7 @@
   background: unset;
   border: 1px solid #b0bac9;
   background-color: var(--bgColor);
+  color: var(--fontColor);
   font-weight: 600;
   overflow: hidden;
   display: flex;
@@ -60,7 +61,7 @@
 }
 
 .btn-wrapper.btn-bounceIn{
-  animation-name: bouceIn;
+  animation-name: bounceIn;
   animation-duration: 350ms;
   animation-delay: calc(var(--animation-order) * 100ms);
   animation-fill-mode: both;
@@ -96,7 +97,6 @@
 }
 
 .btn-wrapper.btn-default {
-  border: 1px solid #ccc;
   background-color: unset;
 }
 
@@ -108,7 +108,7 @@
 /** 
 animations go under
 */
-@keyframes bouceIn {
+@keyframes bounceIn {
   0% { 
     opacity: 0; 
     transform: scale(.3);

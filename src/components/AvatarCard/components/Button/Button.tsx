@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { CSSProperties, FC, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import './Button.scoped.css';
@@ -33,7 +36,7 @@ const Button: FC<Props> = ({ kind, color, width, height, label, order, style, on
 
   useEffect(() => {
     const subscription = ButtonService.getStagger().subscribe((res) => {
-      if (staggerOut != res) {
+      if (staggerOut !== res) {
         setStaggerOut(res);
       }
     });
@@ -46,7 +49,8 @@ const Button: FC<Props> = ({ kind, color, width, height, label, order, style, on
   let styles = {
     '--width': `${width}px`,
     '--height': `${kind === 'neu-circle' ? width : height}px`,
-    '--bgColor': color === 'primary' ? '#304FFE' : '#fff',
+    '--bgColor': color === 'primary' ? 'teal' : '#fff',
+    '--fontColor': color === 'primary' ? '#fff' : 'teal',
     '--animation-order': `${order}`,
   } as CSSProperties;
 

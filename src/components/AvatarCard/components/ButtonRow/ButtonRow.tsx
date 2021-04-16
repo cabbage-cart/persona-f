@@ -46,9 +46,8 @@ const ButtonRow: FC = () => {
   return (
     <>
       {items.map(({ key, value, icon, tooltip }) => (
-        <span className="tooltip">
+        <span className="tooltip" key={key}>
           <Button
-            key={key}
             onClick={assignNewState(value)}
             width={50}
             height={60}

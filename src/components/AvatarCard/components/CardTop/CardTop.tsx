@@ -2,15 +2,16 @@ import React, { FC } from 'react';
 import { Avatar } from './components';
 import './CardTop.scoped.css';
 import Button from '../Button';
-import { AvatarState, States } from '../../../../shared';
+import { AvatarState, AwardsType, States } from '../../../../shared';
 import { ButtonService, StateService } from '../../../../services';
 
 type Props = {
   state: States;
   avatarStates: AvatarState;
+  award: AwardsType;
 };
 
-const CardTop: FC<Props> = ({ state, avatarStates }: Props) => {
+const CardTop: FC<Props> = ({ state, avatarStates, award }: Props) => {
   return (
     <div className="card-top">
       {state && (
@@ -23,14 +24,14 @@ const CardTop: FC<Props> = ({ state, avatarStates }: Props) => {
           }}
           label="back"
           kind="text"
+          color="secondary"
           style={{
             position: 'absolute',
             top: 0,
-            color: 'teal',
           }}
         />
       )}
-      <Avatar avatarStates={avatarStates} />
+      <Avatar avatarStates={avatarStates} award={award} />
     </div>
   );
 };

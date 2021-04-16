@@ -1,0 +1,85 @@
+.awards-button-holder {
+  display: flex;
+  flex-direction: row;
+  padding: 0 16px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 40px;
+  min-height: 65px;
+  position: relative;
+  z-index: 0;
+  animation-name: bounceIn;
+  animation-duration: 350ms;
+  animation-delay: 100ms;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+}
+
+.awards-button {
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  background-color: unset;
+}
+
+.awards-most-hired {
+  height: 32px;
+  width: 32px;
+  background-color: #4a3c9a;
+  border-radius: 50%;
+  margin-right: 2em;
+}
+
+.awards-top-rated {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  background-color: #0091ea;
+}
+
+.awards-selected-indicator {
+  width: 40px;
+  height: 40px;
+  right: 0;
+  border: 4px solid var(--borderColor);
+  border-radius: 50%;
+  transform: scale(0.2);
+  opacity: 0;
+  position: absolute;
+  margin-right: 8px;
+  transition: opacity 0.3s ease-in-out, margin 0.2s cubic-bezier(0.78, 0.87, 0.59, 1.11), transform 0.2s ease-in-out;
+}
+
+.awards-selected-indicator.item-selected {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.awards-selected-indicator.most-hired {
+  margin-right: 66.1px;
+}
+
+.awards-selected-indicator.top-rated {
+  margin-right: 8px;
+}
+
+@keyframes bouceIn {
+    0% { 
+      opacity: 0; 
+      transform: scale(.3);
+   }
+   50% { 
+      opacity: 1;
+      transform: scale(1.05);
+   }
+   70% {
+      transform: scale(.9);
+   }
+   100% {
+      transform: scale(1);
+   }
+  }
