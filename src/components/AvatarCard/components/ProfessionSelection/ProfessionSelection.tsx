@@ -13,28 +13,34 @@ const ProfessionSelection: FC = () => {
 
   return (
     <>
-      <Button
-        animation="slideInLeft"
-        label={
-          <>
-            <img width="40px" height="40px" src={Icon4} alt="button-icon" />
-          </>
-        }
-        onClick={assignProfession('plumber')}
-        width={50}
-        height={60}
-      />
-      <Button
-        animation="slideInRight"
-        label={
-          <>
-            <img width="40px" height="40px" src={Icon5} alt="button-icon" />
-          </>
-        }
-        onClick={assignProfession('mechanic')}
-        width={50}
-        height={60}
-      />
+      <span className="tooltip">
+        <Button
+          animation="slideInLeft"
+          label={
+            <>
+              <img width="40px" height="40px" src={Icon4} alt="button-icon" />
+            </>
+          }
+          onClick={assignProfession('plumber')}
+          width={50}
+          height={60}
+        />
+        <span className="tooltiptext">Plumber</span>
+      </span>
+      <span className="tooltip">
+        <Button
+          animation="slideInRight"
+          label={
+            <>
+              <img width="40px" height="40px" src={Icon5} alt="button-icon" />
+            </>
+          }
+          onClick={assignProfession('mechanic')}
+          width={50}
+          height={60}
+        />
+        <span className="tooltiptext">Mechanic</span>
+      </span>
     </>
   );
 };

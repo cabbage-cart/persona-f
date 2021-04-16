@@ -4,6 +4,7 @@ import { AvatarState } from '../shared';
 const avatarState = new BehaviorSubject<AvatarState>({
   online: true,
   verified: false,
+  newUser: true,
 });
 
 export const AvatarStateService = {

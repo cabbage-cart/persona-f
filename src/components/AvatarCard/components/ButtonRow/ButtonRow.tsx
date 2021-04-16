@@ -9,6 +9,7 @@ import { States } from '../../../../shared';
 interface Item {
   key: number;
   value: States;
+  tooltip: string;
   icon: string;
 }
 
@@ -16,16 +17,19 @@ const items: Array<Item> = [
   {
     key: 1,
     value: 'profession',
+    tooltip: 'Select profession',
     icon: Icon3,
   },
   {
     key: 2,
     value: 'state',
+    tooltip: 'Select avatar states',
     icon: Icon2,
   },
   {
     key: 3,
     value: 'awards',
+    tooltip: 'Select awards',
     icon: Icon1,
   },
 ];
@@ -41,22 +45,25 @@ const ButtonRow: FC = () => {
   };
   return (
     <>
-      {items.map((item) => (
-        <Button
-          key={item.key}
-          onClick={assignNewState(item.value)}
-          width={50}
-          height={60}
-          animation="stagger"
-          label={
-            <>
-              <img width="40px" height="40px" src={item.icon} alt="button-icon" />
-            </>
-          }
-          kind="neu"
-          color="secondary"
-          order={item.key}
-        />
+      {items.map(({ key, value, icon, tooltip }) => (
+        <span className="tooltip">
+          <Button
+            key={key}
+            onClick={assignNewState(value)}
+            width={50}
+            height={60}
+            animation="stagger"
+            label={
+              <>
+                <img width="40px" height="40px" src={icon} alt="button-icon" />
+              </>
+            }
+            kind="neu"
+            color="secondary"
+            order={key}
+          />
+          <span className="tooltiptext">{tooltip}</span>
+        </span>
       ))}
     </>
   );

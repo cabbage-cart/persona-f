@@ -43,6 +43,7 @@
     ],
     "rules": {
         "no-shadow": "off",
+        "no-unused-variable": 0, // ignore variables starting with _ (underscore)
         "@typescript-eslint/no-shadow": [
             "error"
         ],

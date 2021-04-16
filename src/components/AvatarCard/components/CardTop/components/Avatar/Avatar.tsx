@@ -1,26 +1,26 @@
 import React, { FC, useEffect, useState } from 'react';
 import clsx from 'clsx';
-import Persona from '../../../../assets/persona.svg';
 import HardHat from '../../../../assets/hardhat.svg';
 import Dungarees from '../../../../assets/dungarees.svg';
 import MechanicHat from '../../../../assets/mechanic-hat.svg';
 import Verfied from '../../../../assets/verified.svg';
+import Beard from '../../../../assets/beard.svg';
 import './Avatar.scoped.css';
 import { AvatarState, Professions } from '../../../../../../shared';
 import { ProfessionService } from '../../../../../../services';
+import AvatarImage from '../AvatarImage';
 
 type Props = {
   avatarStates: AvatarState;
 };
 
-const Avatar: FC<Props> = ({ avatarStates: { online, verified } }: Props) => {
+const Avatar: FC<Props> = ({ avatarStates: { online, verified, newUser } }: Props) => {
   const [profession, setProfession] = useState<Professions>('');
 
   useEffect(() => {
     const subscription = ProfessionService.getState().subscribe((res) => {
       setProfession(res);
     });
-
     return () => {
       if (subscription != null) {
         subscription.unsubscribe();
@@ -30,6 +30,7 @@ const Avatar: FC<Props> = ({ avatarStates: { online, verified } }: Props) => {
 
   const styles = {
     filter: online ? 'grayscale(0)' : 'grayscale(1)',
+    backgroundColor: online ? '#5FEE64' : '#434343',
   } as React.CSSProperties;
 
   return (
@@ -42,7 +43,7 @@ const Avatar: FC<Props> = ({ avatarStates: { online, verified } }: Props) => {
         })}
       />
       <div style={styles} className="avatar">
-        <img alt="persona" src={Persona} width="auto" height="360px" />
+        <AvatarImage newUser={newUser} />
         <img
           alt="hardhat"
           src={HardHat}
@@ -62,6 +63,13 @@ const Avatar: FC<Props> = ({ avatarStates: { online, verified } }: Props) => {
           src={MechanicHat}
           className={clsx('mechanic-hat', {
             show: profession === 'mechanic',
+          })}
+        />
+        <img
+          alt="beard"
+          src={Beard}
+          className={clsx('beard', {
+            show: !newUser,
           })}
         />
       </div>

@@ -13,7 +13,7 @@ type Props = {
   order?: number;
   active?: boolean;
   style?: React.CSSProperties;
-  animation?: 'stagger' | 'slideInRight' | 'slideInLeft';
+  animation?: 'stagger' | 'slideInRight' | 'slideInLeft' | 'bounceIn';
 };
 
 const defaultDrops: Partial<Props> = {
@@ -23,7 +23,7 @@ const defaultDrops: Partial<Props> = {
   height: 32,
   order: 1,
   active: false,
-  onClick: (args: any) => void 0,
+  onClick: (_args: unknown) => undefined,
   style: undefined,
   animation: 'stagger',
 };
@@ -72,6 +72,7 @@ const Button: FC<Props> = ({ kind, color, width, height, label, order, style, on
         active: Boolean(active),
         'btn-slideInLeft': animation === 'slideInLeft',
         'btn-slideInRight': animation === 'slideInRight',
+        'btn-bounceIn': animation === 'bounceIn',
       })}
     >
       {label}

@@ -59,6 +59,14 @@
   box-shadow: inset -3px -3px 7px #ffffff73, inset 3px 3px 5px rgba(94, 104, 121, 0.288);
 }
 
+.btn-wrapper.btn-bounceIn{
+  animation-name: bouceIn;
+  animation-duration: 350ms;
+  animation-delay: calc(var(--animation-order) * 100ms);
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+}
+
 .btn-wrapper.btn-neu.btn-stagger.btn-stagger-in {
   animation-name: animateIn;
   animation-duration: 350ms;
@@ -100,6 +108,22 @@
 /** 
 animations go under
 */
+@keyframes bouceIn {
+  0% { 
+    opacity: 0; 
+    transform: scale(.3);
+ }
+ 50% { 
+    opacity: 1;
+    transform: scale(1.05);
+ }
+ 70% {
+    transform: scale(.9);
+ }
+ 100% {
+    transform: scale(1);
+ }
+}
 @keyframes slideInLeft {
   0% {
     opacity: 0;
