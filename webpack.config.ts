@@ -5,9 +5,11 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import path from 'path';
 
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+const target = process.env.NODE_ENV === 'production' ? 'browserslist' : 'web';
 
 const config = {
   mode,
+  target,
   entry: {
     persona: './src/index.tsx',
   },

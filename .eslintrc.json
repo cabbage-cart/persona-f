@@ -42,6 +42,7 @@
         "plugin:prettier/recommended" // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
     ],
     "rules": {
+        "prettier/prettier": 0,
         "no-shadow": "off",
         // "no-unused-variable": [true, {"ignore-pattern": "^_"}]// ignore variables starting with _ (underscore)
         "no-unused-variable": 0, // options deprecated. only accepes 0 and 1 

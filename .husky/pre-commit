@@ -1,1 +1,8 @@
+#!/bin/sh
+# husky
+# v1.0.0-rc.2 win32
+
+export HUSKY_GIT_PARAMS="$*"
+node ./node_modules/husky/lib/runner/bin `basename "$0"`
+
 npx lint-staged
