@@ -6,9 +6,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "NODE_ENV=production webpack --watch",
-    "build-dev": "NODE_ENV=development webpack --watch",
-    "start": "NODE_ENV=development webpack serve --open",
+    "build": "SET NODE_ENV=production && webpack --watch",
+    "build-dev": "SET NODE_ENV=development && webpack --watch",
+    "start": "SET NODE_ENV=development && webpack serve --open",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
     "prepare": "husky install"
   },

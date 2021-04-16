@@ -41,11 +41,13 @@ const Avatar: FC<Props> = ({ avatarStates: { online, verified, newUser }, award 
 
   const showAwardIcon = (event: MouseEvent): void => {
     event.preventDefault();
+
     setClicked(true);
-    setShowAward(true);
     setTimeout(() => {
       setClicked(false);
     }, 900);
+    if (showAward) return;
+    setShowAward(true);
 
     setTimeout(() => {
       setShowAward(false);
@@ -61,37 +63,9 @@ const Avatar: FC<Props> = ({ avatarStates: { online, verified, newUser }, award 
           show: verified,
         })}
       />
-      <button
-        onClick={showAwardIcon}
-        style={
-          {
-            '--borderColor': award === 'most-hired' ? '#4a3c9a' : award === 'top-rated' ? '#0091ea' : 'unset',
-          } as React.CSSProperties
-        }
-        className={clsx('award-border', {
-          'award-border-show': award,
-          'award-border-clicked': clicked,
-        })}
-        type="button"
-      >
-        <div />
-      </button>
       <div style={styles} className="avatar">
         <AvatarImage newUser={newUser} />
-        <img
-          alt="top-rated"
-          src={TopRatedIcon}
-          className={clsx('top-rated-award-border', {
-            show: showAward && award === 'top-rated',
-          })}
-        />
-        <img
-          alt="most-hired"
-          src={MostHiredIcon}
-          className={clsx('most-hired-award-border', {
-            show: showAward && award === 'most-hired',
-          })}
-        />
+
         <img
           alt="hardhat"
           src={HardHat}
@@ -120,6 +94,20 @@ const Avatar: FC<Props> = ({ avatarStates: { online, verified, newUser }, award 
             show: !newUser,
           })}
         />
+        <img
+          alt="top-rated"
+          src={TopRatedIcon}
+          className={clsx('top-rated-award-border', {
+            show: showAward && award === 'top-rated',
+          })}
+        />
+        <img
+          alt="most-hired"
+          src={MostHiredIcon}
+          className={clsx('most-hired-award-border', {
+            show: showAward && award === 'most-hired',
+          })}
+        />
         <div
           className={clsx('filter-award', {
             'filter-award-most-hired': showAward && award === 'most-hired',
@@ -127,6 +115,21 @@ const Avatar: FC<Props> = ({ avatarStates: { online, verified, newUser }, award 
           })}
         />
       </div>
+      <button
+        onClick={showAwardIcon}
+        style={
+          {
+            '--borderColor': award === 'most-hired' ? '#4a3c9a' : award === 'top-rated' ? '#0091ea' : 'unset',
+          } as React.CSSProperties
+        }
+        className={clsx('award-border', {
+          'award-border-show': award,
+          'award-border-clicked': clicked,
+        })}
+        type="button"
+      >
+        <div />
+      </button>
     </>
   );
 };

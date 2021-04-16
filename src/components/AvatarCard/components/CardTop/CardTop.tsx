@@ -29,6 +29,7 @@ const CardTop: FC<Props> = ({ state, avatarStates, award }: Props) => {
             height: '40px',
             position: 'absolute',
             top: 0,
+            margin: 0
           }}
         />
       )}
