@@ -19,10 +19,19 @@ const config = {
     publicPath: '',
   },
   devServer: {
-    writeToDisk: true,
-    watchContentBase: true,
-    contentBase: path.resolve(__dirname, './dist'),
-    index: 'persona.html', // default index.html
+    static: path.resolve(__dirname, './dist'),
+    client: {
+      overlay: true,
+    },
+    devMiddleware: {
+      index: 'persona.html',
+      mimeTypes: { "text/html": ["phtml"] },
+      serverSideRender: true,
+      writeToDisk: true
+    },
+    open: true,
+    hot: true,
+    compress: true,
     port: 8000,
   },
   optimization: {
