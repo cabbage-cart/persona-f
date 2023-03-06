@@ -1,6 +1,7 @@
 import React, { FC, MouseEvent } from 'react';
 import { ButtonService, StateService } from '../../../../services';
 import Button from '../Button';
+import Tooltip from '../Tooltip';
 import Icon1 from '../../assets/icon1.svg';
 import Icon2 from '../../assets/icon2.svg';
 import Icon3 from '../../assets/icon3.svg';
@@ -46,7 +47,7 @@ const ButtonRow: FC = () => {
   return (
     <>
       {items.map(({ key, value, icon, tooltip }) => (
-        <span className="tooltip" key={key}>
+        <Tooltip key={key} tooltip={tooltip}>
           <Button
             onClick={assignNewState(value)}
             width={50}
@@ -61,8 +62,7 @@ const ButtonRow: FC = () => {
             color="secondary"
             order={key}
           />
-          <span className="tooltiptext">{tooltip}</span>
-        </span>
+        </Tooltip>
       ))}
     </>
   );
